@@ -113,3 +113,26 @@ DATABASE
 ferramenta.db (SQLite) contiene già gli account e il catalogo importato da
 products.json. Per ripartire da zero: python3 seed.py --force (attenzione,
 cancella tutti i preventivi salvati e le modifiche fatte finora).
+
+VIDEO PROMOZIONALI DAL LISTINO
+==============================
+
+promo/genera_video.py crea video verticali 1080x1920 (Reels, TikTok,
+Storie, Shorts, Stato WhatsApp) partendo da products.json: copertina
+della categoria, 5 articoli in evidenza con marchio, codice e prezzo di
+listino, chiusura con i contatti del negozio.
+
+Requisiti: Python 3, Pillow (pip install pillow), ffmpeg.
+
+    python promo/genera_video.py --negozio "Nome Negozio" \
+        --telefono "0123 456789" --indirizzo "Via ..., Città" --sito "@profilo"
+
+Opzioni utili:
+    --categorie "Maniglie" "Motori"   solo alcune categorie
+    --codici AG500070 ASSDC175BLACK   video con articoli scelti a mano
+    --titolo "Offerte di Natale"      titolo del video con --codici
+    --senza-prezzi                    nasconde i prezzi
+    --musica sottofondo.mp3           aggiunge musica (usa brani con licenza)
+    --seme 12                         sceglie altri articoli a caso
+
+I video vengono salvati in promo/video/ (esclusa da git).
